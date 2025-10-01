@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import InputField from "../components/InputFiled";
 import Button from "../components/Button";
+import api from "../api.ts";
 
 type FormData = {
-  userName: string;
+  username: string;
   email: string;
   full_name: string;
   password: string;
@@ -14,7 +15,7 @@ type FormData = {
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    userName: "",
+    username: "",
     email: "",
     full_name: "",
     password: "",
@@ -36,7 +37,7 @@ const RegisterPage: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("/api/register", formData);
+      const response = await api.post("/user/", formData);
       alert("Регистрация успешна!");
       console.log(response.data);
     } catch (error) {
@@ -71,8 +72,8 @@ const RegisterPage: React.FC = () => {
           <InputField
             label="Имя пользователя"
             type="text"
-            name="userName"
-            value={formData.userName}
+            name="username"
+            value={formData.username}
             onChange={handleChange}
             required
           />
