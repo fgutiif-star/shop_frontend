@@ -5,6 +5,8 @@ type User = {
   id: number;
   userName: string;
   email: string;
+  role: "admin" | "seller" | "buyer";
+  
 };
 
 type AuthContextType = {
@@ -13,6 +15,7 @@ type AuthContextType = {
   register: (data: any) => Promise<void>;
   logout: () => void;
 };
+
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -30,7 +33,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const register = async (data: any) => {
     await api.post("/auth/user/", data);
-    // можно сразу вызвать login или перекинуть на страницу логина
   };
 
   const logout = () => {
@@ -51,3 +53,4 @@ export const useAuth = () => {
   if (!context) throw new Error("useAuth must be used within AuthProvider");
   return context;
 };
+

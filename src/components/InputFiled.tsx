@@ -2,7 +2,7 @@ import React from "react";
 
 type InputFieldProps = {
   label: string;
-  type: string;
+  type?: string;
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,7 +11,7 @@ type InputFieldProps = {
 
 const InputField: React.FC<InputFieldProps> = ({
   label,
-  type,
+  type = 'text',
   name,
   value,
   onChange,

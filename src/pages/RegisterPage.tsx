@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import InputField from "../components/InputFiled";
 import Button from "../components/Button";
 import api from "../api.ts";
@@ -71,7 +70,7 @@ const RegisterPage: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <InputField
             label="Имя пользователя"
-            type="text"
+        
             name="username"
             value={formData.username}
             onChange={handleChange}

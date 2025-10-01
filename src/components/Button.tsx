@@ -22,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({ text, type = "button" }) => {
     >
       {text}
     </button>
+    
   );
 };
 
