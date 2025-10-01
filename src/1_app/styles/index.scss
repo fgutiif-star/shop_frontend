@@ -1,0 +1,156 @@
+@use './reset' as *;
+@use './variables/global' as *;
+
+// ----------------------------------- Inter ---------------------------------------
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Thin.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Thin.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-ExtraLight.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-ExtraLight.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Light.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Light.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Regular.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Medium.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-SemiBold.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Bold.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-ExtraBold.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-ExtraBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("./fonts/Inter/Inter_24pt-Black.woff2") format("woff2"),
+  url("./fonts/Inter/Inter_24pt-Black.woff") format("woff");
+}
+
+// ----------------------------------- Inter ---------------------------------------
+// ------------------------------ PlusJakartaSans ----------------------------------
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-ExtraLight.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-ExtraLight.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-Light.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-Light.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-SemiBold.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style:  normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff2") format("woff2"),
+  url("./fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff") format("woff");
+}
+
+// ------------------------------ PlusJakartaSans ----------------------------------
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-family-inter);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.page-wrapper {}
+
+.container {
+  max-width: 1230px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}

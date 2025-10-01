@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import InputField from "../components/InputFiled";
-import Button from "../components/Button";
+import InputField from "@/6_shared/ui/InputFiled";
+import Button from "@/6_shared/ui/Button";
 import api from "../api.ts";
 
 type FormData = {

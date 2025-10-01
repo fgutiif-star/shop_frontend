@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import InputField from "../components/InputFiled";
-import Button from "../components/Button";
+import InputField from "@/6_shared/ui/InputFiled";
+import Button from "@/6_shared/ui/Button";
 import api from "../api";
 
 export default function LoginPage() {
