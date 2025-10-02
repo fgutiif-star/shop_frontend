@@ -5,7 +5,10 @@ import Button from "../components/Button";
 import api from "../api";
 
 export default function LoginPage() {
-  const { login } = useAuth();
+
+  const { login, user } = useAuth();
+
+  console.log('asdf', user)
 
   const [formData, setFormData] = useState({
     username: "",
@@ -37,7 +40,11 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit}>
         <InputField label="Имя пользователя" name="username" value={formData.username} onChange={handleChange} />
         <InputField label="Пароль" type="password" name="password" value={formData.password} onChange={handleChange} />
+        
         <Button type="submit" text="Войти" />
+        <Button type="submit" text="Зарегистрироваться"/>
+    
+       
       </form>
     </div>
   );
