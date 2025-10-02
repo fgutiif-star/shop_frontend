@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import {IMessage, MessageStatus} from "@/6_shared";
+import {type IMessage, MessageStatus} from "@/6_shared";
 
 // Функция для добавления уведомлений через Ant Design
 export const addMessage = (message: Omit<IMessage, "id">) => {

@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames, Mods } from "@/6_shared";
+import { classNames, type Mods } from "@/6_shared";
 import cls from "./AppInput.module.scss";
 import {Input} from "antd";
 import type {InputProps} from "antd/lib";
@@ -19,7 +19,7 @@ interface AppInputProps extends InputProps {
 }
 
 
-const AppInput = memo((props: AppInputProps) => {
+export const AppInput = memo((props: AppInputProps) => {
     const {
         className,
         theme = ThemeInput.PRIMARY,
@@ -74,5 +74,3 @@ const AppInput = memo((props: AppInputProps) => {
         </div>
     );
 });
-
-export default AppInput;

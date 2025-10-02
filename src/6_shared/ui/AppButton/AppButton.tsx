@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import { classNames, Mods } from "@/6_shared/";
+import { classNames, type Mods } from "@/6_shared/";
 import cls from "./AppButton.module.scss";
 import {Button} from "antd";
 import type {ButtonProps} from "antd/lib/button";
