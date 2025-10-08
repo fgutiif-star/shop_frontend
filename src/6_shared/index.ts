@@ -12,6 +12,7 @@ export {
 
 export {
     MessageStatus,
+    UserRole,
     type IMessage,
     type IPageableParams,
     adminSidebarLinksState,

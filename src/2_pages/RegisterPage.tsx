@@ -63,6 +63,7 @@ const RegisterPage: React.FC = () => {
                         { required: true, message: "Подтвердите пароль!" },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
+                                console.log('value', value)
                                 if (!value || getFieldValue("password" ) === value) {
                                     return Promise.resolve();
                                 }

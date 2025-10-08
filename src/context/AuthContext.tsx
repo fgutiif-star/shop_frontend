@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import api from "../api";
+import {api} from "@/6_shared"
 
 type User = {
   id: number;

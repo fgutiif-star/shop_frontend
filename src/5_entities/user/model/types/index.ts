@@ -1,3 +1,5 @@
+import {UserRole} from "@/6_shared/const/enums.ts";
+
 export interface LoginData {
     "refresh": string;
     "access": string;
@@ -26,7 +28,7 @@ export interface RegisterRequestProps {
     full_name: string;
     password: string;
     password_confirm: string;
-    role: "admin" | "seller" | "buyer";
+    role: UserRole;
 }
 export interface RegisterData {
     id: number;
