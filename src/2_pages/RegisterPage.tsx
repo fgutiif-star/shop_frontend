@@ -1,137 +1,109 @@
-import React, { useState } from "react";
-import InputField from "@/6_shared/ui/InputFiled";
-import Button from "@/6_shared/ui/Button";
-import api from "../api.ts";
-
-type FormData = {
-  username: string;
-  email: string;
-  full_name: string;
-  password: string;
-  password_confirm: string;
-  role : "admin" | "seller" | "buyer"
-};
+import React from "react";
+import { AppButton, AppInput } from "@/6_shared";
+import { Form, Select } from "antd";
+import type { RegisterRequestProps } from "@/5_entities/user/model/types";
+import {useNavigate} from "react-router-dom";
 
 const RegisterPage: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    username: "",
-    email: "",
-    full_name: "",
-    password: "",
-    password_confirm: "",
-    role: 'admin',
-  });
+    const [form] = Form.useForm<RegisterRequestProps>();
+    const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    const { request, isLoading, error } = useRequest<RegisterRequestProps, RegisterData>();
 
-    if (formData.password !== formData.password_confirm) {
-      alert("Пароли не совпадают!");
-      return;
-    }
+    const onFinish = async (values: RegisterRequestProps) => {
+        await request(values, registerRequest, () => {
+            navigate("/");
+        });
+    };
 
-    try {
-      const response = await api.post("/user/", formData);
-      alert("Регистрация успешна!");
-      console.log(response.data);
-    } catch (error) {
-      alert("Ошибка при регистрации");
-      console.error(error);
-    }
-  };
+    return (
+        <div>
+            <Form
+                form={form}
+                name="register"
+                onFinish={onFinish}
+                style={{ maxWidth: 600 }}
+                scrollToFirstError
+            >
+                <Form.Item
+                    name="username"
+                    label="Username"
+                    rules={[{ required: true, message: "Введите имя пользователя!" }]}
+                >
+                    <AppInput />
+                </Form.Item>
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        backgroundColor: "#f5f5f5",
-      }}
-    >
-      <div
-        style={{
-          width: "400px",
-          padding: "30px",
-          backgroundColor: "white",
-          borderRadius: "8px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Регистрация
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <InputField
-            label="Имя пользователя"
-        
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <InputField
-            label="Email"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <InputField
-            label="Полное имя"
-            type="text"
-            name="full_name"
-            value={formData.full_name}
-            onChange={handleChange}
-          />
-          <InputField
-            label="Пароль"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <InputField
-            label="Подтвердите пароль"
-            type="password"
-            name="password_confirm"
-            value={formData.password_confirm}
-            onChange={handleChange}
-            required
-          />
-          <div style={{
-            marginBottom: "15px",
-            alignItems: "center",
-            textAlign:"center"
-          }}>
-            <label htmlFor="">Роль:</label>
-            <select name="role" value={formData.role} onChange={handleChange} style={{
-              padding:"5px",
-              margin:"5px",
-              backgroundColor:"#87CEEB"
+                <Form.Item
+                    name="email"
+                    label="E-mail"
+                    rules={[
+                        { type: "email", message: "Введите корректный E-mail!" },
+                        { required: true, message: "E-mail обязателен!" },
+                    ]}
+                >
+                    <AppInput />
+                </Form.Item>
 
-            }}>
-              <option value="buyer">Buyer</option>
-              <option value="seller">Seller</option>
-              <option value="admin">Admin</option>
+                <Form.Item
+                    name="password"
+                    label="Password"
+                    rules={[{ required: true, message: "Введите пароль!" }]}
+                    hasFeedback
+                >
+                    <AppInput type="password" />
+                </Form.Item>
 
-            </select>
-          </div>
+                <Form.Item
+                    name="password_confirm"
+                    label="Confirm Password"
+                    dependencies={["password"]}
+                    hasFeedback
+                    rules={[
+                        { required: true, message: "Подтвердите пароль!" },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue("password" ) === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(
+                                    new Error("Пароли не совпадают!")
+                                );
+                            },
+                        }),
+                    ]}
+                >
+                    <AppInput type="password" />
+                </Form.Item>
 
-        
-          <Button type="submit" text="Зарегистрироваться" />
-        </form>
-      </div>
-    </div>
-  );
+                <Form.Item
+                    name="full_name"
+                    label="Full name"
+                    rules={[{ required: true, message: "Введите полное имя!" }]}
+                >
+                    <AppInput />
+                </Form.Item>
+
+                <Form.Item
+                    name="role"
+                    label="Role"
+                    rules={[{ required: true, message: "Выберите роль!" }]}
+                >
+                    <Select>
+                        <Select.Option value="admin">Админ</Select.Option>
+                        <Select.Option value="seller">Продавец</Select.Option>
+                        <Select.Option value="buyer">Покупатель</Select.Option>
+                    </Select>
+                </Form.Item>
+
+                <Form.Item>
+                    <AppButton type="primary" htmlType="submit">
+                        Register
+                    </AppButton>
+                </Form.Item>
+            </Form>
+        </div>
+    );
 };
 
 export default RegisterPage;

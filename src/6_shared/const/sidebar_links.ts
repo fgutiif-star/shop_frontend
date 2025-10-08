@@ -11,6 +11,11 @@ export const adminSidebarLinksState: SidebarLinksType[] = [
     //     to: getRouterStateMain,
     //     label: "Главная",
     // }
+    // {
+    //     id: "2",
+    //     to: getRouterStateMain,
+    //     label: "список пользователей",
+    // }
 ]
 
 export const buyerSidebarLinksState: SidebarLinksType[] = [

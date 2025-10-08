@@ -10,7 +10,6 @@ interface ProtectedRouteProps {
 const ProtectedRoute = observer(({ roles }: ProtectedRouteProps) => {
     const { meData, isAuth } = UserStore;
 
-
     if (!isAuth) {
         return <Navigate to="/login" replace />;
     }

@@ -17,13 +17,14 @@ const $api = axios.create({
 
 $api.interceptors.request.use((config: any) => {
     if (token_availability()) {
-        config.headers.Authorization = `Bearer ${localStorage.getItem(token_availability())}`
+        config.headers.Authorization = `Bearer ${token_availability()}`
     }
     return config;;
 });
 
 const clearLocalStorage = () => {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
+    localStorage.removeItem(REFRESH_TOKEN_KEY);
     window.location.replace("/");
     window.location.reload();
 };
