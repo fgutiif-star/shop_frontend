@@ -1,4 +1,5 @@
 export const getRouterHome = "/";
+export const getRouterUserList = "/user_list_page";
 export const getRouterRegister = "/registration";
 export const getRouterLogin = "/login";
 export const getRouterNotFound = "/*";

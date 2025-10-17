@@ -31,37 +31,58 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-        <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            style={{ maxWidth: 600 }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            autoComplete="off"
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+                backgroundColor: "#f5f5f5",
+            }}
         >
-            <Form.Item<string>
-                label="Имя пользователя"
-                name="username"
-                rules={[{ required: true, message: 'Введите данные!' }]}
+            <div
+                style={{
+                    backgroundColor: "white",
+                    padding: "40px 50px",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    width: "100%",
+                    maxWidth: "400px",
+                }}
             >
-                <AppInput required={loginError} />
-            </Form.Item>
+                <Form
+                    name="basic"
+                    layout="vertical"
+                    onFinish={onFinish}
+                    autoComplete="off"
+                >
+                    <h2 style={{ textAlign: "center", marginBottom: "24px" }}>Вход</h2>
 
-            <Form.Item<string>
-                label="Пароль"
-                name="password"
-                rules={[{ required: true, message: 'Введите данные!' }]}
-            >
-                <AppInput type={"password"} required={loginError} />
-            </Form.Item>
+                    <Form.Item<string>
+                        label="Имя пользователя"
+                        name="username"
+                        rules={[{ required: true, message: "Введите данные!" }]}
+                    >
+                        <AppInput required={loginError} />
+                    </Form.Item>
 
-            <Form.Item label={null}>
-                <AppButton type="primary" htmlType="submit">Войти</AppButton>
-            </Form.Item>
-        </Form>
+                    <Form.Item<string>
+                        label="Пароль"
+                        name="password"
+                        rules={[{ required: true, message: "Введите данные!" }]}
+                    >
+                        <AppInput type="password" required={loginError} />
+                    </Form.Item>
+
+                    <Form.Item style={{ textAlign: "center", marginTop: "24px" }}>
+                        <AppButton type="primary" htmlType="submit">
+                            Войти
+                        </AppButton>
+                    </Form.Item>
+                </Form>
+            </div>
         </div>
+
     );
 };
 

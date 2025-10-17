@@ -5,7 +5,7 @@ import {
     getRouterLogin,
     getRouterNotFound,
     getRouterRegister,
-    getRouterUnauthorized,
+    getRouterUnauthorized, getRouterUserList,
 } from "@/6_shared/const/routes.ts";
 import HomeLayout from "../layout/HomeLayout/HomeLayout.tsx";
 import AuthLayout from "../layout/AuthLayout/AuthLayout.tsx";
@@ -15,6 +15,7 @@ import {MainLayout} from "../layout/MainLayout/MainLayout.tsx";
 import {NotFoundPage} from "@/2_pages/not_found_page";
 import {UnauthorizedPage} from "@/2_pages/unauthorized_page";
 import {RegisterPage} from "@/2_pages/register_page";
+import {UserListPage} from "@/2_pages/user_list_page";
 
 const AppRouter = () => {
     const router = createBrowserRouter(
@@ -25,6 +26,10 @@ const AppRouter = () => {
                     {
                         path: getRouterHome,
                         element: <HomePage />,
+                    },
+                    {
+                        path: getRouterUserList,
+                        element: <UserListPage />,
                     },
                 ],
             },

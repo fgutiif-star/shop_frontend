@@ -1,4 +1,4 @@
-export type {LoginData, MeData, LoginRequestProps, RegisterData, RegisterRequestProps} from "./model/types";
+export type {LoginData, MeData, LoginRequestProps, RegisterData, RegisterRequestProps, FetchUserProps} from "./model/types";
 
 export {fetchRefreshToken} from "./model/services/fetchRefreshToken.ts";
 export {loginRequest} from "./model/services/loginPage.ts";

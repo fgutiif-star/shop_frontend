@@ -41,3 +41,8 @@ export interface RegisterData {
     modified_at: string;
     blocked_at: string | null;
 }
+
+export interface FetchUserProps {
+    page: number;
+    per_page: number;
+}
