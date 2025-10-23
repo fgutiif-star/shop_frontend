@@ -46,3 +46,17 @@ export interface FetchUserProps {
     page: number;
     per_page: number;
 }
+
+
+export interface UserData {
+    id: number;
+    username: string;
+    email: string;
+    full_name: string;
+    role: string;
+    is_active: boolean;
+}
+export interface UsersResponse {
+    items: UserData[];
+    total: number;
+}

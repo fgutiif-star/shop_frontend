@@ -10,8 +10,12 @@ const App = observer(() => {
     const { inited, initAuthData } = UserStore;
 
     useEffect(() => {
+        console.log(inited, 'asdf')
         if (!inited) {
+            console.log(inited, 'asdf234')
+            console.log('init work')
             if (token_availability()) {
+                console.log('work in if')
                 fetchRefreshToken()
             } else {
                 initAuthData();

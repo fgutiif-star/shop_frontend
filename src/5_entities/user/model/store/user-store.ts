@@ -21,6 +21,7 @@ class UserStore {
     }
 
     initAuthData = () => {
+        console.log('work inited true')
         this.inited = true;
     };
 

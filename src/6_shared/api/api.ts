@@ -19,15 +19,15 @@ $api.interceptors.request.use((config: any) => {
     if (token_availability()) {
         config.headers.Authorization = `Bearer ${token_availability()}`
     }
-    return config;;
+    return config;
 });
 
-const clearLocalStorage = () => {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
-    localStorage.removeItem(REFRESH_TOKEN_KEY);
-    window.location.replace("/");
-    window.location.reload();
-};
+// const clearLocalStorage = () => {
+//     localStorage.removeItem(ACCESS_TOKEN_KEY);
+//     localStorage.removeItem(REFRESH_TOKEN_KEY);
+//     window.location.replace("/");
+//     window.location.reload();
+// };
 
 const refreshAccessToken = async () => {
     try {
@@ -39,7 +39,7 @@ const refreshAccessToken = async () => {
         return response.data;
     } catch (error) {
         console.log(error)
-        clearLocalStorage()
+        // clearLocalStorage()
     }
 };
 
@@ -50,6 +50,7 @@ $api.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
         if (error?.response?.status === 401 && !originalRequest._retry) {
+            console.log('originalRequest', originalRequest)
             originalRequest._retry = true; // Помечаем, что мы уже пытались повторить запрос
             const newAccessToken = await refreshAccessToken(); // Получаем новый access токен
 

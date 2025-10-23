@@ -12,7 +12,13 @@ const RegisterPage = () => {
     const navigate = useNavigate();
 
 
-    const { request, isLoading, error } = useRequest<RegisterRequestProps, RegisterData>();
+    const {
+        request,
+        isLoading,
+        error,
+        response,
+        status,
+    } = useRequest<RegisterRequestProps, RegisterData>();
 
     const onFinish = async (values: RegisterRequestProps) => {
         await request(values, registerRequest, () => navigate("/login/"));

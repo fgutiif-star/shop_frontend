@@ -6,6 +6,7 @@ import type {LoginData, LoginRequestProps} from "@/5_entities/user";
 import {loginRequest} from "@/5_entities/user";
 import {AppLoader} from "@/3_widgets";
 import {useNavigate} from "react-router-dom";
+import {ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY} from "@/6_shared/const";
 
 const LoginPage = () => {
     const navigate = useNavigate()
