@@ -4,6 +4,7 @@ import type { FetchUserProps, UsersResponse, UserData } from '@/5_entities/user/
 import {useRequest} from "@/6_shared/lib";
 import { Table, Pagination } from 'antd';
 import type { TableColumnsType } from 'antd';
+import UserListFilter from "@/4_features/UserListFilter/UserListFilter.tsx";
 
 
 const UserListPage = () => {
@@ -31,13 +32,13 @@ const UserListPage = () => {
             title: "Full Name",
             dataIndex: "full_name",
             key: "full_name",
-            sorter: (a, b) => (a.full_name || "").localeCompare(b.full_name || ""),
+
         },
         {
             title: "Username",
             dataIndex: "username",
             key: "username",
-            sorter: (a, b) => (a.username || "").localeCompare(b.username || ""),
+
         },
         {
             title: "Email",
@@ -50,7 +51,8 @@ const UserListPage = () => {
             key: "role",
             filters: [
                 { text: "Admin", value: "admin" },
-                { text: "User", value: "user" },
+                { text: "Seller", value: "seller" },
+                { text: "Buyer", value: "buyer" },
             ],
             onFilter: (value, record) => record.role === value,
         },
@@ -67,6 +69,7 @@ const UserListPage = () => {
                 alignItems: "center",
                 gap: "8px"
             }}>Список пользователей</h1>
+            <UserListFilter />
             <Table<UserData>
                 columns={columns}
                 dataSource={response?.items || []}
