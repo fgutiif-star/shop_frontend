@@ -45,6 +45,9 @@ export interface RegisterData {
 export interface FetchUserProps {
     page: number;
     per_page: number;
+    username?: string;
+    role?: "admin" | "seller" | "buyer" | null;
+    is_active?: boolean | null;
 }
 
 
